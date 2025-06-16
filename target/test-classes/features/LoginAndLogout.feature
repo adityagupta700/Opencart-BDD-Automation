@@ -8,6 +8,7 @@ Feature: Login Functionality
     Then Title of the page should be "Dashboard"
     When User clicks on logout button
     Then Title of the page should be "Administration"
+    And Close the browser
 
   Scenario Outline: Test the login functionality with sets of user
     Given User launches the chrome browser
@@ -17,8 +18,9 @@ Feature: Login Functionality
     Then Title of the page should be "Dashboard"
     When User clicks on logout button
     Then Title of the page should be "Administration"
+    And Close the browser
 
-    # Always give the examples in double quotes if the values passed are string values otherwise don't
+    ##Always give the examples in double quotes if the values passed are string values otherwise don't
     Examples: 
       | username   | password   |
       | "admin1"   | "admin1"   |
