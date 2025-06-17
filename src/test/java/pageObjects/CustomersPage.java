@@ -2,7 +2,6 @@ package pageObjects;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,7 +50,7 @@ public class CustomersPage extends BasePage {
 	WebElement filteredTable;
 
 	@FindBy(xpath = "//form[@id='form-customer']//tbody/tr")
-	List<WebElement> allFilteredRows;
+	List<WebElement> filteredRows;
 
 	@FindBy(xpath = "//form[@id='form-customer']//tbody/tr/td")
 	List<WebElement> filteredCells;
@@ -106,7 +105,7 @@ public class CustomersPage extends BasePage {
 	}
 
 	public int getRowCount() {
-		return allFilteredRows.size();
+		return filteredRows.size();
 	}
 
 	public int getCellCount() {
@@ -114,11 +113,7 @@ public class CustomersPage extends BasePage {
 	}
 
 	public List<WebElement> getAllFilteredRows() {
-		return allFilteredRows;
+		return filteredRows;
 	}
 
-	public List<WebElement> getAllFilteredCellsInRow(int rowIndex) {
-		WebElement targetRow = allFilteredRows.get(rowIndex);
-		return targetRow.findElements(By.xpath("/td"));
-	}
 }

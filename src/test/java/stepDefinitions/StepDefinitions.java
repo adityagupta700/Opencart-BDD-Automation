@@ -1,18 +1,17 @@
 package stepDefinitions;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import io.cucumber.java.en.*;
 
 public class StepDefinitions extends BaseClass {
-
-	String firstName;
-	String lastName;
-	String fullName;
-	String email;
 
 	@Given("User launches the chrome browser")
 	public void launchChromeBrowser() {
@@ -84,14 +83,16 @@ public class StepDefinitions extends BaseClass {
 	}
 
 	@And("User enters new customer details")
-	public void user_enters_new_customer_details() {
-		firstName = faker.name().firstName();
+	public void user_enters_new_customer_details() throws IOException {
+		
+		
+		String firstName = faker.name().firstName();
 		cp.setFirstname(firstName);
 
-		lastName = faker.name().lastName();
+		String lastName = faker.name().lastName();
 		cp.setLastname(lastName);
 
-		email = faker.internet().safeEmailAddress();
+		String email = faker.internet().safeEmailAddress();
 		cp.setEmail(email);
 
 		cp.setPhoneNumber(faker.phoneNumber().phoneNumber());
@@ -99,6 +100,13 @@ public class StepDefinitions extends BaseClass {
 		String password = faker.internet().password();
 		cp.setPassword(password);
 		cp.confirmPassword(password);
+		
+		HashMap<String, String> data = new HashMap<String, String>();
+		data.put("firstName", firstName);
+		data.put("lastName", lastName);
+		data.put("email", email);
+		
+		fileHandler.writeData(data);
 
 	}
 
@@ -121,9 +129,8 @@ public class StepDefinitions extends BaseClass {
 	// Customer search with name
 
 	@When("User enters fullname in Customer Name field")
-	public void enterNameInCustomerSearchField() {
-		fullName = firstName + lastName;
-		cp.enterFullnameForFilter(fullName);
+	public void enterNameInCustomerSearchField() throws IOException {
+		cp.enterFullnameForFilter(getFullName());
 	}
 
 	@When("Clicks on filter button")
@@ -131,20 +138,61 @@ public class StepDefinitions extends BaseClass {
 		cp.pressFilterButton();
 	}
 
-	@Then("Customer should be available in customer details table.")
-	public void checkIfCustomerAvailableUsingName() {
+	@Then("Customer name should be same as provided to filter the customer")
+	public void checkIfCustomerAvailableUsingName() throws IOException, Exception {
+		List<WebElement> rows = cp.getAllFilteredRows();
 		
-		for(int i = 1; i < cp.getRowCount(); i++) {
-			List<WebElement> cells = cp.getAllFilteredCellsInRow(i);
+		Thread.sleep(2000);
+		
+		for(int i = 0; i < cp.getRowCount(); i++) {
 			
-			String actualName = cells.get(1).getText();
+			Thread.sleep(2000);
+			WebElement targetCell = rows.get(i).findElements(By.tagName("td")).get(1);
 			
-			if(actualName.equals(fullName)) {
-				Assert.assertEquals(fullName, actualName);
-				return;
+			if(targetCell.getText().equals(getFullName())) {
+				Thread.sleep(2000);
+				Assert.assertEquals(getFullName(), targetCell.getText());
+				
+				fileHandler.deleteData("firstName");
+				fileHandler.deleteData("lastName");
+				
+				break;
+			}else {
+				Assert.assertTrue(false);
 			}
 		}
+	}
+	
+	// Customer search with name
+	
+	@When("User enters email in the E-mail field")
+	public void enterEmailInEmailSearchField() throws IOException {
+		cp.enterEmailForFilter(fileHandler.readProperty("email"));
+	}
+	
+	@Then("Customer email should be same as email provided to filter the customer")
+	public void checkIfCustomerAvailableUsingEmail() throws IOException, Exception {
+		String expectedEmail = fileHandler.readProperty("email");
 		
-		Assert.assertTrue(false);
+		List<WebElement> rows = cp.getAllFilteredRows();
+		
+		Thread.sleep(2000);
+		
+		for(int i = 0; i < cp.getRowCount(); i++) {
+			
+			Thread.sleep(2000);
+			WebElement targetCell = rows.get(i).findElements(By.tagName("td")).get(2);
+			
+			if(targetCell.getText().equals(expectedEmail)) {
+				Thread.sleep(2000);
+				Assert.assertEquals(expectedEmail, targetCell.getText());
+				
+				fileHandler.deleteData("email");
+				
+				break;
+			}else {
+				Assert.assertTrue(false);
+			}
+		}
 	}
 }
