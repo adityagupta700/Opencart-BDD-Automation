@@ -1,6 +1,9 @@
 package stepDefinitions;
 
+import java.util.List;
+
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 import io.cucumber.java.en.*;
 
@@ -8,6 +11,7 @@ public class StepDefinitions extends BaseClass {
 
 	String firstName;
 	String lastName;
+	String fullName;
 	String email;
 
 	@Given("User launches the chrome browser")
@@ -118,7 +122,8 @@ public class StepDefinitions extends BaseClass {
 
 	@When("User enters fullname in Customer Name field")
 	public void enterNameInCustomerSearchField() {
-		cp.enterFullnameForFilter(firstName);
+		fullName = firstName + lastName;
+		cp.enterFullnameForFilter(fullName);
 	}
 
 	@When("Clicks on filter button")
@@ -127,7 +132,19 @@ public class StepDefinitions extends BaseClass {
 	}
 
 	@Then("Customer should be available in customer details table.")
-	public void checkCustomerDetialsInTable() {
+	public void checkIfCustomerAvailableUsingName() {
 		
+		for(int i = 1; i < cp.getRowCount(); i++) {
+			List<WebElement> cells = cp.getAllFilteredCellsInRow(i);
+			
+			String actualName = cells.get(1).getText();
+			
+			if(actualName.equals(fullName)) {
+				Assert.assertEquals(fullName, actualName);
+				return;
+			}
+		}
+		
+		Assert.assertTrue(false);
 	}
 }

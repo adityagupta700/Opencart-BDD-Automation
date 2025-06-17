@@ -1,5 +1,8 @@
 package pageObjects;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,19 +37,26 @@ public class CustomersPage extends BasePage {
 	@FindBy(xpath = "//*[@id=\"content\"]/div[1]/div/div/button")
 	WebElement saveButton;
 
-	//Search fields
+	// Search fields
 	@FindBy(xpath = "//input[@id = 'input-name']")
 	WebElement nameSearchField;
-	
+
 	@FindBy(xpath = "//input[@id = 'input-email']")
 	WebElement emailSearchField;
-	
+
 	@FindBy(xpath = "//button[@id='button-filter']")
 	WebElement filterButton;
+
+	@FindBy(xpath = "//form[@id='form-customer']/table")
+	WebElement filteredTable;
+
+	@FindBy(xpath = "//form[@id='form-customer']//tbody/tr")
+	List<WebElement> allFilteredRows;
+
+	@FindBy(xpath = "//form[@id='form-customer']//tbody/tr/td")
+	List<WebElement> filteredCells;
 	
-	@FindBy(xpath = "//form[@id='form-customer']//tbody//tr")
-	WebElement allFilteredRows;
-	
+
 	public void clickOnAddCustomerButton() {
 		addCutomerButton.click();
 	}
@@ -79,20 +89,36 @@ public class CustomersPage extends BasePage {
 	public void clickSaveButton() {
 		saveButton.click();
 	}
-	
+
 	public void enterFullnameForFilter(String fullname) {
+		waithelper.waitForElement(nameSearchField, 2);
 		nameSearchField.sendKeys(fullname);
 	}
-	
+
 	public void enterEmailForFilter(String email) {
+		waithelper.waitForElement(emailSearchField, 2);
 		emailSearchField.sendKeys(email);
 	}
-	
+
 	public void pressFilterButton() {
 		filterButton.click();
+		waithelper.waitForElement(filteredTable, 5);
 	}
-	
-	public WebElement getAllFilteredRows() {
+
+	public int getRowCount() {
+		return allFilteredRows.size();
+	}
+
+	public int getCellCount() {
+		return filteredCells.size();
+	}
+
+	public List<WebElement> getAllFilteredRows() {
 		return allFilteredRows;
+	}
+
+	public List<WebElement> getAllFilteredCellsInRow(int rowIndex) {
+		WebElement targetRow = allFilteredRows.get(rowIndex);
+		return targetRow.findElements(By.xpath("/td"));
 	}
 }
