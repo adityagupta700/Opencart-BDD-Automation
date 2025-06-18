@@ -24,7 +24,6 @@ public class BaseClass {
 	public DashboardPage dp;
 	public CustomersPage cp;
 
-	public Faker faker;
 	public PropertyFileHandler configFileHandler;
 	public PropertyFileHandler customerFileHandler;
 	public static Logger logger;

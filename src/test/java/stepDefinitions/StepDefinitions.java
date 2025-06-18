@@ -109,11 +109,6 @@ public class StepDefinitions extends BaseClass {
 		Thread.sleep(3000);
 	}
 
-//	@And("Close the browser")
-//	public void closeBrowser() {
-//		logger.info("*************** Closing Browser **************");
-//		driver.quit();
-//	}
 
 	// Add Customers feature step definitions
 
@@ -136,7 +131,7 @@ public class StepDefinitions extends BaseClass {
 	public void user_enters_new_customer_details() throws IOException {
 		logger.info("*************** Adding  new Customer details **************");
 		
-		faker = new Faker();
+		Faker faker = new Faker();
 		
 		String firstName = faker.name().firstName();
 		cp.setFirstname(firstName);
