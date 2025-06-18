@@ -4,23 +4,28 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import io.cucumber.java.en.*;
+import com.github.javafaker.Faker;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class StepDefinitions extends BaseClass {
 
 	@Given("User launches the chrome browser")
 	public void launchChromeBrowser() {
-		setup();
 		initializePageObjects();
+		logger.info("*************** Launching browser **************");
 	}
 
 	@And("User opens OpenCart Ecommerce - Admin Application using {string}")
 	public void launch_OpenCart_AdminApplication(String url) throws Exception {
+		logger.info("*************** Opening Url **************");
 		driver.get(url);
 		Thread.sleep(1000);
 		driver.manage().window().maximize();
@@ -84,7 +89,7 @@ public class StepDefinitions extends BaseClass {
 
 	@And("User enters new customer details")
 	public void user_enters_new_customer_details() throws IOException {
-		
+		faker = new Faker();
 		
 		String firstName = faker.name().firstName();
 		cp.setFirstname(firstName);
@@ -106,7 +111,7 @@ public class StepDefinitions extends BaseClass {
 		data.put("lastName", lastName);
 		data.put("email", email);
 		
-		fileHandler.writeData(data);
+		customerFileHandler.writeData(data);
 
 	}
 
@@ -153,8 +158,8 @@ public class StepDefinitions extends BaseClass {
 				Thread.sleep(2000);
 				Assert.assertEquals(getFullName(), targetCell.getText());
 				
-				fileHandler.deleteData("firstName");
-				fileHandler.deleteData("lastName");
+				customerFileHandler.deleteData("firstName");
+				customerFileHandler.deleteData("lastName");
 				
 				break;
 			}else {
@@ -167,12 +172,12 @@ public class StepDefinitions extends BaseClass {
 	
 	@When("User enters email in the E-mail field")
 	public void enterEmailInEmailSearchField() throws IOException {
-		cp.enterEmailForFilter(fileHandler.readProperty("email"));
+		cp.enterEmailForFilter(customerFileHandler.readProperty("email"));
 	}
 	
 	@Then("Customer email should be same as email provided to filter the customer")
 	public void checkIfCustomerAvailableUsingEmail() throws IOException, Exception {
-		String expectedEmail = fileHandler.readProperty("email");
+		String expectedEmail = customerFileHandler.readProperty("email");
 		
 		List<WebElement> rows = cp.getAllFilteredRows();
 		
@@ -187,7 +192,7 @@ public class StepDefinitions extends BaseClass {
 				Thread.sleep(2000);
 				Assert.assertEquals(expectedEmail, targetCell.getText());
 				
-				fileHandler.deleteData("email");
+				customerFileHandler.deleteData("email");
 				
 				break;
 			}else {

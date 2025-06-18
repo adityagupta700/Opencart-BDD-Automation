@@ -11,7 +11,11 @@ public class PropertyFileHandler {
 
 	Properties properties = new Properties();
 	
-	String filePath = System.getProperty("user.dir") + "/test-data/customerData.properties";
+	String filePath;
+	
+	public PropertyFileHandler(String filePath) {
+		this.filePath = filePath;
+	}
 	
 	public void writeData(HashMap<String, String> data) throws IOException {
 		
