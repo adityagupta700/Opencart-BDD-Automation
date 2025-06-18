@@ -33,7 +33,7 @@ public class CustomersPage extends BasePage {
 	@FindBy(xpath = "//input[@id='input-confirm']")
 	WebElement confirmPasswordField;
 
-	@FindBy(xpath = "//*[@id=\"content\"]/div[1]/div/div/button")
+	@FindBy(xpath = "//*[@id='content']/div[1]/div/div/button")
 	WebElement saveButton;
 
 	// Search fields

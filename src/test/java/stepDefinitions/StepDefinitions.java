@@ -4,18 +4,58 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 import com.github.javafaker.Faker;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import utilities.PropertyFileHandler;
 
 public class StepDefinitions extends BaseClass {
+	
+	@Before
+	public void setup() throws IOException {
+		String rootPath = System.getProperty("user.dir");
+
+		configFileHandler = new PropertyFileHandler("config.properties");
+		
+		String browser = configFileHandler.readProperty("browser");
+		
+		if (browser.equals("chrome")) {
+			
+			System.setProperty("webdriver." + browser + ".driver", rootPath + configFileHandler.readProperty("chromedriverpath"));
+			driver = new ChromeDriver();
+		
+		}else if(browser.equals("edge")) {
+			
+			System.setProperty("webdriver." + browser + ".driver", rootPath + configFileHandler.readProperty("edgedriverpath"));
+			driver = new EdgeDriver();
+
+		}
+		
+		logger = Logger.getLogger("opencart");
+		PropertyConfigurator.configure("log4j.properties");
+
+		// customers feature => property file
+		customerFileHandler = new PropertyFileHandler(rootPath + "/test-data/customerData.properties");
+	}
+	
+	@After
+	public void teardown() {
+		logger.info("*************** Closing Browser **************");
+		driver.quit();
+	}
 
 	@Given("User launches the chrome browser")
 	public void launchChromeBrowser() {
@@ -42,13 +82,16 @@ public class StepDefinitions extends BaseClass {
 
 	@And("User clicks on login button")
 	public void clickLoginBtn() throws Exception {
+		logger.info("*************** Logging In **************");
+		
 		lp.clickLoginBtn();
 		Thread.sleep(3000);
 	}
 
 	@Then("Title of the page should be {string}")
 	public void checkTitleOfPage(String title) {
-
+		logger.info("*************** Checking Title of the Page **************");
+		
 		if (driver.getPageSource().contains("No match for Username and/or Password.")
 				|| (!title.equals(driver.getTitle()))) {
 			driver.quit();
@@ -61,14 +104,16 @@ public class StepDefinitions extends BaseClass {
 
 	@When("User clicks on logout button")
 	public void clickOnLogoutButton() throws Exception {
+		logger.info("*************** Logging out **************");
 		dp.clickOnLogoutBtn();
 		Thread.sleep(3000);
 	}
 
-	@And("Close the browser")
-	public void closeBrowser() {
-		driver.quit();
-	}
+//	@And("Close the browser")
+//	public void closeBrowser() {
+//		logger.info("*************** Closing Browser **************");
+//		driver.quit();
+//	}
 
 	// Add Customers feature step definitions
 
@@ -89,6 +134,8 @@ public class StepDefinitions extends BaseClass {
 
 	@And("User enters new customer details")
 	public void user_enters_new_customer_details() throws IOException {
+		logger.info("*************** Adding  new Customer details **************");
+		
 		faker = new Faker();
 		
 		String firstName = faker.name().firstName();
@@ -116,7 +163,7 @@ public class StepDefinitions extends BaseClass {
 	}
 
 	@When("User clicks on save button")
-	public void clickOnSaveButton() {
+	public void clickOnSaveButton() {		
 		if (driver.getPageSource().contains("Warning: Please check the form carefully for errors!")) {
 			driver.quit();
 			Assert.assertTrue(false);
@@ -127,14 +174,14 @@ public class StepDefinitions extends BaseClass {
 	}
 
 	@Then("User can see confirmation message {string}")
-	public void checkConfirmationMessage(String message) {
+	public void checkConfirmationMessage(String message) {		
 		Assert.assertTrue(driver.getPageSource().contains(message));
 	}
 
 	// Customer search with name
 
 	@When("User enters fullname in Customer Name field")
-	public void enterNameInCustomerSearchField() throws IOException {
+	public void enterNameInCustomerSearchField() throws IOException {		
 		cp.enterFullnameForFilter(getFullName());
 	}
 
@@ -145,6 +192,7 @@ public class StepDefinitions extends BaseClass {
 
 	@Then("Customer name should be same as provided to filter the customer")
 	public void checkIfCustomerAvailableUsingName() throws IOException, Exception {
+		logger.info("*************** Checking Customer details using fullname **************");
 		List<WebElement> rows = cp.getAllFilteredRows();
 		
 		Thread.sleep(2000);
@@ -177,6 +225,8 @@ public class StepDefinitions extends BaseClass {
 	
 	@Then("Customer email should be same as email provided to filter the customer")
 	public void checkIfCustomerAvailableUsingEmail() throws IOException, Exception {
+		logger.info("*************** Checking Customer details using email **************");
+
 		String expectedEmail = customerFileHandler.readProperty("email");
 		
 		List<WebElement> rows = cp.getAllFilteredRows();

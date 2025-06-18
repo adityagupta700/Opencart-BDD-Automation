@@ -29,34 +29,6 @@ public class BaseClass {
 	public PropertyFileHandler customerFileHandler;
 	public static Logger logger;
 
-	@Before
-	public void setup() throws IOException {
-		String rootPath = System.getProperty("user.dir");
-
-		configFileHandler = new PropertyFileHandler("config.properties");
-
-		
-		String browser = configFileHandler.readProperty("browser");
-		
-		if (browser.equals("chrome")) {
-			
-			System.setProperty("webdriver." + browser + ".driver", rootPath + configFileHandler.readProperty("chromedriverpath"));
-			driver = new ChromeDriver();
-		
-		}else if(browser.equals("edge")) {
-			
-			System.setProperty("webdriver." + browser + ".driver", rootPath + configFileHandler.readProperty("edgedriverpath"));
-			driver = new EdgeDriver();
-		
-		}
-		
-		logger = Logger.getLogger("opencart");
-		PropertyConfigurator.configure("log4j.properties");
-
-		// customers feature => property file
-		customerFileHandler = new PropertyFileHandler(rootPath + "/test-data/customerData.properties");
-	}
-
 	public void initializePageObjects() {
 		lp = new LoginPage(driver);
 		dp = new DashboardPage(driver);

@@ -12,6 +12,9 @@ import io.cucumber.junit.CucumberOptions;
 		dryRun = false,
 		monochrome = true,
 		plugin = {"pretty", "html:target/HtmlReports/report.html"}
+		//tags = "@sanity"  
+		// {"@sanity, @regression"} - this will run either sanity or regression tests
+		// {"@sanity", "@regression"} - this will run tests which have both the tags 
 		)
 public class TestRun {
 }

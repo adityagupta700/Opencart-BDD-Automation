@@ -1,0 +1,2 @@
+cd D:\Workspace_Cucumber_with_Selenium\OpenCartV02_Automation
+mvn clean install

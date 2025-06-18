@@ -1,0 +1,9 @@
+testRunners\TestRun.class
+pageObjects\CustomersPage.class
+pageObjects\LoginPage.class
+pageObjects\BasePage.class
+stepDefinitions\BaseClass.class
+utilities\WaitHelper.class
+stepDefinitions\StepDefinitions.class
+utilities\PropertyFileHandler.class
+pageObjects\DashboardPage.class
