@@ -28,3 +28,10 @@ Feature: Customer Feature of OpenCart Admin
     When User enters email in the E-mail field
     And Clicks on filter button
     Then Customer email should be same as email provided to filter the customer
+
+  @positive
+  Scenario: Test the successful deletion of customer
+    When User selects the customer to be deleted
+    And Click on delete button
+    Then User can see confirmation message "Success: You have modified customers!"
+    And User should be deleted from the list of Customers

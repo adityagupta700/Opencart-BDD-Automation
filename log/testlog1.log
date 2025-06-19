@@ -144,3 +144,57 @@
 2025-06-19 14:39:26,447 [main] INFO opencart - *************** Checking Title of the Page **************
 2025-06-19 14:39:27,037 [main] INFO opencart - *************** Checking Customer details using email **************
 2025-06-19 14:39:33,125 [main] INFO opencart - *************** Closing Browser **************
+2025-06-19 17:21:03,353 [main] INFO opencart - *************** Launching browser **************
+2025-06-19 17:21:03,359 [main] INFO opencart - *************** Opening Url **************
+2025-06-19 17:21:11,486 [main] INFO opencart - *************** Logging In **************
+2025-06-19 17:21:26,568 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:21:27,079 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:21:27,443 [main] INFO opencart - *************** Adding  new Customer details **************
+2025-06-19 17:21:28,708 [main] INFO opencart - *************** Closing Browser **************
+2025-06-19 17:21:29,772 [main] INFO opencart - *************** Launching browser **************
+2025-06-19 17:21:29,773 [main] INFO opencart - *************** Opening Url **************
+2025-06-19 17:21:37,707 [main] INFO opencart - *************** Logging In **************
+2025-06-19 17:21:41,069 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:21:41,618 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:21:42,188 [main] INFO opencart - *************** Checking Customer details using fullname **************
+2025-06-19 17:21:48,294 [main] INFO opencart - *************** Closing Browser **************
+2025-06-19 17:21:49,281 [main] INFO opencart - *************** Launching browser **************
+2025-06-19 17:21:49,283 [main] INFO opencart - *************** Opening Url **************
+2025-06-19 17:21:57,421 [main] INFO opencart - *************** Logging In **************
+2025-06-19 17:22:00,976 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:22:01,479 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:22:02,058 [main] INFO opencart - *************** Checking Customer details using email **************
+2025-06-19 17:22:08,165 [main] INFO opencart - *************** Closing Browser **************
+2025-06-19 17:22:09,203 [main] INFO opencart - *************** Launching browser **************
+2025-06-19 17:22:09,204 [main] INFO opencart - *************** Opening Url **************
+2025-06-19 17:22:17,272 [main] INFO opencart - *************** Logging In **************
+2025-06-19 17:22:31,842 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:22:32,330 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:22:39,227 [main] INFO opencart - *************** Closing Browser **************
+2025-06-19 17:25:31,399 [main] INFO opencart - *************** Launching browser **************
+2025-06-19 17:25:31,404 [main] INFO opencart - *************** Opening Url **************
+2025-06-19 17:25:39,344 [main] INFO opencart - *************** Logging In **************
+2025-06-19 17:25:42,706 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:25:43,261 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:25:43,677 [main] INFO opencart - *************** Adding  new Customer details **************
+2025-06-19 17:25:44,933 [main] INFO opencart - *************** Closing Browser **************
+2025-06-19 17:25:46,079 [main] INFO opencart - *************** Launching browser **************
+2025-06-19 17:25:46,082 [main] INFO opencart - *************** Opening Url **************
+2025-06-19 17:25:54,402 [main] INFO opencart - *************** Logging In **************
+2025-06-19 17:25:57,756 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:25:58,298 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:25:58,874 [main] INFO opencart - *************** Checking Customer details using fullname **************
+2025-06-19 17:26:04,972 [main] INFO opencart - *************** Closing Browser **************
+2025-06-19 17:26:06,013 [main] INFO opencart - *************** Launching browser **************
+2025-06-19 17:26:06,013 [main] INFO opencart - *************** Opening Url **************
+2025-06-19 17:26:13,947 [main] INFO opencart - *************** Logging In **************
+2025-06-19 17:26:28,473 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:26:28,983 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:26:29,509 [main] INFO opencart - *************** Checking Customer details using email **************
+2025-06-19 17:26:35,611 [main] INFO opencart - *************** Closing Browser **************
+2025-06-19 17:26:36,602 [main] INFO opencart - *************** Launching browser **************
+2025-06-19 17:26:36,604 [main] INFO opencart - *************** Opening Url **************
+2025-06-19 17:26:44,631 [main] INFO opencart - *************** Logging In **************
+2025-06-19 17:26:47,974 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:26:48,496 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 17:26:55,418 [main] INFO opencart - *************** Closing Browser **************

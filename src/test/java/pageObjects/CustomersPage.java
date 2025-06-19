@@ -12,7 +12,7 @@ public class CustomersPage extends BasePage {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//div[@id='content']//a")
+	@FindBy(xpath = "//*[@id='content']/div[1]/div/div/a")
 	WebElement addCutomerButton;
 
 	@FindBy(xpath = "//input[@id='input-firstname']")
@@ -54,6 +54,9 @@ public class CustomersPage extends BasePage {
 
 	@FindBy(xpath = "//form[@id='form-customer']//tbody/tr/td")
 	List<WebElement> filteredCells;
+	
+	@FindBy(xpath = "//*[@id='content']/div[1]/div/div/button[2]")
+	WebElement deleteCustomerButton;
 	
 
 	public void clickOnAddCustomerButton() {
@@ -116,4 +119,7 @@ public class CustomersPage extends BasePage {
 		return filteredRows;
 	}
 
+	public void clickOnDeleteCustomerButton() {
+		deleteCustomerButton.click();
+	}
 }
