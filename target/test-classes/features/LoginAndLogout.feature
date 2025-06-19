@@ -1,5 +1,6 @@
 Feature: Login Functionality
 
+  @positive
   Scenario: Test the successful login of user to the application
     Given User launches the chrome browser
     And User opens OpenCart Ecommerce - Admin Application using "http://localhost:8080/opencart/upload/admin/"
@@ -9,6 +10,7 @@ Feature: Login Functionality
     When User clicks on logout button
     Then Title of the page should be "Administration"
 
+  @positive @negative
   Scenario Outline: Test the login functionality with sets of user
     Given User launches the chrome browser
     And User opens OpenCart Ecommerce - Admin Application using "http://localhost:8080/opencart/upload/admin/"

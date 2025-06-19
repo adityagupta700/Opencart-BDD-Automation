@@ -3,14 +3,8 @@ package stepDefinitions;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 
-import com.github.javafaker.Faker;
-
-import io.cucumber.java.Before;
 import pageObjects.CustomersPage;
 import pageObjects.DashboardPage;
 import pageObjects.LoginPage;

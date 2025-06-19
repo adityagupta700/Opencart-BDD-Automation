@@ -10,20 +10,20 @@ Feature: Customer Feature of OpenCart Admin
     And User clicks on Customers option from dropdown
     Then Title of the page should be "Customers"
 
-  @sanity
+  @positive
   Scenario: Test the successful creation of new customer
     When User clicks on Add Customer button
     And User enters new customer details
     And User clicks on save button
     Then User can see confirmation message "Success: You have modified customers!"
 
-  @regression
+  @positive
   Scenario: Test the customer filter functionality using customer name field
     When User enters fullname in Customer Name field
     And Clicks on filter button
     Then Customer name should be same as provided to filter the customer
 
-  @regression
+  @positive
   Scenario: Test the customer filter functionality using customer email field
     When User enters email in the E-mail field
     And Clicks on filter button

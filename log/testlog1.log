@@ -123,3 +123,24 @@
 2025-06-18 19:07:19,466 [main] INFO opencart - *************** Checking Title of the Page **************
 2025-06-18 19:07:20,130 [main] INFO opencart - *************** Checking Customer details using email **************
 2025-06-18 19:07:26,227 [main] INFO opencart - *************** Closing Browser **************
+2025-06-19 14:38:34,707 [main] INFO opencart - *************** Launching browser **************
+2025-06-19 14:38:34,713 [main] INFO opencart - *************** Opening Url **************
+2025-06-19 14:38:45,248 [main] INFO opencart - *************** Logging In **************
+2025-06-19 14:38:50,708 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 14:38:51,521 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 14:38:52,229 [main] INFO opencart - *************** Adding  new Customer details **************
+2025-06-19 14:38:53,563 [main] INFO opencart - *************** Closing Browser **************
+2025-06-19 14:38:54,605 [main] INFO opencart - *************** Launching browser **************
+2025-06-19 14:38:54,607 [main] INFO opencart - *************** Opening Url **************
+2025-06-19 14:39:02,709 [main] INFO opencart - *************** Logging In **************
+2025-06-19 14:39:06,053 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 14:39:06,604 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 14:39:07,197 [main] INFO opencart - *************** Checking Customer details using fullname **************
+2025-06-19 14:39:13,308 [main] INFO opencart - *************** Closing Browser **************
+2025-06-19 14:39:14,320 [main] INFO opencart - *************** Launching browser **************
+2025-06-19 14:39:14,322 [main] INFO opencart - *************** Opening Url **************
+2025-06-19 14:39:22,503 [main] INFO opencart - *************** Logging In **************
+2025-06-19 14:39:25,874 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 14:39:26,447 [main] INFO opencart - *************** Checking Title of the Page **************
+2025-06-19 14:39:27,037 [main] INFO opencart - *************** Checking Customer details using email **************
+2025-06-19 14:39:33,125 [main] INFO opencart - *************** Closing Browser **************

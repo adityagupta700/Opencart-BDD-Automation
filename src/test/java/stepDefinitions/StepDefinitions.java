@@ -28,7 +28,7 @@ public class StepDefinitions extends BaseClass {
 	public void setup() throws IOException {
 		String rootPath = System.getProperty("user.dir");
 
-		configFileHandler = new PropertyFileHandler("config.properties");
+		configFileHandler = new PropertyFileHandler("src/test/resources/config.properties");
 		
 		String browser = configFileHandler.readProperty("browser");
 		
@@ -45,7 +45,7 @@ public class StepDefinitions extends BaseClass {
 		}
 		
 		logger = Logger.getLogger("opencart");
-		PropertyConfigurator.configure("log4j.properties");
+		PropertyConfigurator.configure("src/test/resources/log4j.properties");
 
 		// customers feature => property file
 		customerFileHandler = new PropertyFileHandler(rootPath + "/test-data/customerData.properties");
