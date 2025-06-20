@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/resources/features/Customers.feature",
+		features = "features/Customers.feature",
 		glue = {"stepDefinitions"},
 		dryRun = false,
 		monochrome = true,
