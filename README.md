@@ -18,6 +18,17 @@ This is a BDD-based web automation project for the OpenCart Admin application. I
 
 ---
 
+## Features
+
+- BDD implementation using Gherkin syntax
+- Page Object Model for clean and maintainable code
+- Parameterized step definitions
+- Detailed logs using Log4j
+- Rich HTML reports using `cucumber-html`
+- Modular test design for easy scalability
+
+---
+
 ## Test Coverage
 This project covers the following OpenCart Admin functionalities:
 
@@ -30,17 +41,6 @@ This project covers the following OpenCart Admin functionalities:
 - Search Customer
 
 - Delete Customer
-
----
-
-## Features
-
-- BDD implementation using Gherkin syntax
-- Page Object Model for clean and maintainable code
-- Parameterized step definitions
-- Detailed logs using Log4j
-- Rich HTML reports using `cucumber-html`
-- Modular test design for easy scalability
 
 ---
 
