@@ -47,7 +47,7 @@ This project covers the following OpenCart Admin functionalities:
 ## Getting Started
 
 ### Prerequisites
-- XAMPP and OpenCart Admin Application, *follow instructions from timestamp in this video: [53:00](https://www.youtube.com/watch?v=5zfgqqPr8o8&t=3180s)*
+- XAMPP and OpenCart Admin Application, *follow instructions from timestamp in this video: [53:00 in this video](https://www.youtube.com/watch?v=5zfgqqPr8o8&t=3180s)*
 - Java 8 or later
 - Maven installed
 
